@@ -2,6 +2,7 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react
 import React from 'react'
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 
 const data = [
@@ -9,7 +10,7 @@ const data = [
         id: '1',
         title: 'Get a ride',
         image: 'https://links.papareact.com/3pn',
-        screen: 'MapsScreen',
+        screen: 'MapScreen',
     },{
         id: '2',
         title: 'Order Food',
@@ -18,7 +19,9 @@ const data = [
     }
     ];
 
-const NavOptions = ({ navigation }) => {
+const NavOptions = () => {
+
+      const navigation = useNavigation();
 
   return (
     <FlatList
@@ -28,7 +31,11 @@ const NavOptions = ({ navigation }) => {
         renderItem={({ item }) => (
             <TouchableOpacity 
                 style={tw`p-2 pb-8 pt-4 bg-gray-200 m-2 w-40 border-2`}
-                onPress={() => navigation.navigate(item.screen)}
+                onPress={() => {
+                    navigation.navigate(item.screen)
+                        // ^^^ item.screen is the same thing as data[0].screen
+                    console.log(navigation)
+                    }}
                 >
                 <Image 
                     style={{width: 120, height: 100, resizeMode: 'contain'}}

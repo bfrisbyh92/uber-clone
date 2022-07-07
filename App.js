@@ -13,15 +13,17 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 // ^^^ Implementing Redux ^^^
 
-export default function App() {
-
 const Stack = createStackNavigator();
 
+export default function App() {
+
   return (
-    <Provider store={ store}>
-    <NavigationContainer>
+    <Provider store={ store }>
       <SafeAreaProvider>
-      <Stack.Navigator>
+      <NavigationContainer>
+      <Stack.Navigator
+      initialRouteName='HomeScreen'
+      >
 
         <Stack.Screen
           name="HomeScreen"
@@ -40,8 +42,8 @@ const Stack = createStackNavigator();
          />
 
       </Stack.Navigator>
-      </SafeAreaProvider>
       </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

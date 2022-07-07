@@ -3,8 +3,12 @@ import React from 'react'
 import tw from 'tailwind-react-native-classnames';
 import NavOptions from '../components/NavOptions'
 const uberLogo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Caa15xOsNCSaVucg7kPZck9cSzqhfJShug&usqp=CAU'
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+
+const navigation = useNavigation(navigation);
+
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
         <View style={tw`p-5`}>
@@ -16,7 +20,7 @@ const HomeScreen = () => {
                     borderRadius: 100/2,
                 }}
                 source={{
-                    uri: `${uberLogo}`,
+                    uri: `${ uberLogo }`,
                 }}
              />
              <NavOptions />
