@@ -25,15 +25,18 @@ const NavOptions = () => {
 
   return (
     <FlatList
-        data={data}
+        data={ data }
         // horizontal={true}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
             <TouchableOpacity 
                 style={tw`p-2 pb-8 pt-4 bg-gray-200 m-2 w-40 border-2`}
                 onPress={() => {
-                    navigation.navigate(item.screen)
-                        // ^^^ item.screen is the same thing as data[0].screen
+                    navigation.navigate('MapScreen')
+                    // navigation.navigate(item.screen)
+                    // ^^^ item.screen is the same thing as data[0].screen
+                    // If I leave it navigation.navigate(item.screen) clicking on order food will throw an error.
+                    // It's navigation.navigate('MapScreen') for now, until/if I implement order food. 
                     console.log(navigation)
                     }}
                 >

@@ -4,6 +4,8 @@ import tw from 'tailwind-react-native-classnames';
 import NavOptions from '../components/NavOptions'
 const uberLogo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Caa15xOsNCSaVucg7kPZck9cSzqhfJShug&usqp=CAU'
 import { useNavigation } from '@react-navigation/native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GOOGLE_API_KEY } from "@env";
 
 const HomeScreen = () => {
 
@@ -23,6 +25,14 @@ const navigation = useNavigation(navigation);
                     uri: `${ uberLogo }`,
                 }}
              />
+
+              <GooglePlacesAutocomplete
+                placeholder='Where From?'
+                nearbyPlacesAPI="GooglePlacesSearch"
+                debounce={900}
+                // ^^^ Change debounce to 400 later. No reason to call the API a million times during production as long as it's working
+              />
+
              <NavOptions />
         </View>
     </SafeAreaView>
