@@ -7,7 +7,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-
+// At the end of build run rm -rf node_modules,
+// go through app and see what's needed,
+// remove unnecessary modules from package.json and expo install again.
 
 import { Provider } from 'react-redux'
 import { store } from './store'
