@@ -27,10 +27,30 @@ const navigation = useNavigation(navigation);
              />
 
               <GooglePlacesAutocomplete
+                styles={{
+                  container: {
+                    flex: 0,
+                  },
+                  textInput: {
+                    fontSize: 18,
+                  }
+                }}
+
+                query={{
+                  key: GOOGLE_API_KEY,
+                  language: 'en',
+                }}
+                enablePoweredByContainer={false}
+                minLength={2}
                 placeholder='Where From?'
                 nearbyPlacesAPI="GooglePlacesSearch"
                 debounce={900}
                 // ^^^ Change debounce to 400 later. No reason to call the API a million times during production as long as it's working
+                onPress={(data, details = null ) => {
+                  console.log(data);
+                  console.log(details);
+                }}
+                fetchDetails={true}
               />
 
              <NavOptions />
