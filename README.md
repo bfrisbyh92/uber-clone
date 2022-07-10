@@ -25,4 +25,4 @@ A clone of the app Uber made using Expo-Cli for React-Native. Designed for ios, 
 
 [Redux-Toolkit made the logic for rides easy to implement](https://redux-toolkit.js.org/)
 
-[Was stuck here until I found this stackoverflow](https://stackoverflow.com/questions/68907223/reducer-in-react-native-not-working-not-a-function/69039012#69039012)
+[Helped me get unstuck](https://stackoverflow.com/questions/68907223/reducer-in-react-native-not-working-not-a-function/69039012#69039012)
