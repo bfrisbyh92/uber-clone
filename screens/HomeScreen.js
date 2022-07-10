@@ -17,7 +17,7 @@ const HomeScreen = () => {
 
 const dispatch = useDispatch();
 
-const navigation = useNavigation(navigation);
+const navigation = useNavigation();
 // useNavigation hook instead of passing a destructured 'navigation' to 'HomeScreen'
 
   return (
@@ -40,6 +40,8 @@ const navigation = useNavigation(navigation);
                 styles={{
                   container: {
                     flex: 0,
+                    // Flex 0 shows up on mobile screens, Flex 1 shows up on Web. Neither show up on both.
+                    // Note to Make media query later for both to work.
                   },
                   textInput: {
                     fontSize: 18,

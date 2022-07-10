@@ -3,6 +3,8 @@ import React from 'react'
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import { selectOrigin } from '../slices/navSlice';
+import { useSelector } from 'react-redux';
 
 
 const data = [
@@ -22,6 +24,7 @@ const data = [
 const NavOptions = () => {
 
       const navigation = useNavigation();
+      const origin = useSelector(selectOrigin);
 
   return (
     <FlatList
@@ -30,6 +33,8 @@ const NavOptions = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
             <TouchableOpacity 
+            disabled={!origin}
+            // ^^ If there is no origin selected this unpressable/clickable to prevent error
                 style={tw`p-2 pb-8 pt-4 bg-gray-200 m-2 w-40 border-2`}
                 onPress={() => {
                     navigation.navigate('MapScreen')
@@ -40,6 +45,7 @@ const NavOptions = () => {
                     console.log(navigation)
                     }}
                 >
+                <View style={tw`${!origin && 'opacity-20'}`}>
                 <Image 
                     style={{width: 120, height: 100, resizeMode: 'contain'}}
                     source={{ uri: item.image }}
@@ -51,6 +57,7 @@ const NavOptions = () => {
                     style={tw`p-2 bg-black rounded-full w-10 mt-4`}
                     type='antdesign' name='arrowright' color='white'
                 />
+                </View>
             </TouchableOpacity>
         )}
     />
