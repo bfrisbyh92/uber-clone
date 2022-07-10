@@ -21,6 +21,6 @@ A clone of the app Uber made using Expo-Cli for React-Native. Designed for ios, 
 
 [Great article on using react-native-maps](https://blog.logrocket.com/react-native-maps-introduction/)
 
-[react-native-elements extremely useful for this native builds](https://reactnativeelements.com/)
+[react-native-elements extremely useful](https://reactnativeelements.com/)
 
 [Redux-Toolkit made the logic for rides easy to implement](https://redux-toolkit.js.org/)
