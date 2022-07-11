@@ -40,6 +40,7 @@ const navigation = useNavigation();
                 styles={{
                   container: {
                     flex: 0,
+                    // flex: 1,
                     // Flex 0 shows up on mobile screens, Flex 1 shows up on Web. Neither show up on both.
                     // Note to Make media query later for both to work.
                   },
