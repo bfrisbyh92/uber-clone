@@ -40,7 +40,9 @@ if(destination && origin)console.log(` Destination: ${destination.description}, 
     >
 
     { origin && destination && (
-      <MapViewDirections 
+      <MapViewDirections
+        // style={{ flex: 1 }}
+        // style={{position: "absolute", bottom: 50}}
         origin={ origin.description }
         destination={ destination.description }
         apikey={ GOOGLE_API_KEY }

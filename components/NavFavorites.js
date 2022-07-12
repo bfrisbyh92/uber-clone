@@ -3,7 +3,7 @@ import React from 'react'
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
 
-
+// Come back here and implement shortcut rides basically just make this functional
 
 const data = [
     {
@@ -26,7 +26,7 @@ const NavFavorites = () => {
         data={data}
         keyExtractor={(item) => item.id }
         ItemSeparatorComponent={(item) => (
-            <View style={[tw`bg-gray-200`, { height: 0.5 }]}/>
+            <View style={[tw`bg-gray-600`, { height: 0.5 }]}/>
         )}
         renderItem={({item: { location, destination, icon } }) => (
             <TouchableOpacity 
