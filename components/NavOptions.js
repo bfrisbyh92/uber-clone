@@ -47,7 +47,7 @@ const NavOptions = () => {
                 >
                 <View style={tw`${!origin && 'opacity-20'}`}>
                 <Image 
-                    style={{width: 120, height: 100, resizeMode: 'contain'}}
+                    style={{width: 100, height: 80, resizeMode: 'contain'}}
                     source={{ uri: item.image }}
                 />
                 <Text
