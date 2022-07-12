@@ -5,6 +5,7 @@ import NavOptions from '../components/NavOptions'
 import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_API_KEY } from "@env";
+import NavFavorites from '../components/NavFavorites';
 
 // Redux
 import { useDispatch } from 'react-redux';
@@ -78,6 +79,7 @@ const navigation = useNavigation();
               />
 
              <NavOptions />
+             <NavFavorites />
         </View>
     </SafeAreaView>
   )
