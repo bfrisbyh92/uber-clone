@@ -46,7 +46,7 @@ const NavigateCard = () => {
       </View>
 
       <View
-        style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100 mb-10`}
+        style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100 mb-2`}
       >
         <TouchableOpacity 
           style={tw`flex flex-row bg-black w-24 px-4 py-3 rounded-full justify-between`}
