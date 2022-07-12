@@ -19,7 +19,7 @@ const data = [
   },
   {
     id: "UberXX",
-    title: "UberXXX",
+    title: "UberXX",
     multiplier: 1.75,
     image: "https://links.papareact.com/7pf",
   },
@@ -79,6 +79,17 @@ const [selected, setSelected] = useState(null);
       )}
     />
 
+    <View>
+      <TouchableOpacity
+       disabled={ !selected }
+       style={tw`bg-black py-3 ${!selected && "bg-gray-300"}`}>
+        <Text
+          style={tw`text-center text-white text-xl`}
+        >
+        Choose { selected?.title }
+        </Text>
+      </TouchableOpacity>
+    </View>
 
     </SafeAreaView>
   )
