@@ -1,21 +1,32 @@
 import { StyleSheet, Text, View } from 'react-native'
 import MapView, { Marker } from 'react-native-maps';
 import { useSelector } from 'react-redux';
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import tw from 'tailwind-react-native-classnames';
 import { selectOrigin, selectDestination } from '../slices/navSlice';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_API_KEY } from "@env";
 
-
 const Map = () => {
 
 const origin = useSelector(selectOrigin)
 const destination = useSelector(selectDestination)
-if(destination && origin)console.log(` Destination: ${destination.description}, origin: ${origin.description}`)
+const mapRef = useRef(null)
+
+useEffect(() => {
+  if(!origin || !destination) return;
+
+  mapRef.current.fitToSuppliedMarkers(['origin', 'destination'], {
+    edgePadding: {top:50, right:50,bottom:50, left:50},
+  });
+},[origin, destination])
+
+if(destination && origin)console.log(` Destination: ${destination.description}, origin: ${origin}`)
+
 
   return (
     <MapView
+        ref={mapRef}
         style={tw`flex-1`}
         // ^^ Map won't show up without
         mapType="mutedStandard"
@@ -28,28 +39,17 @@ if(destination && origin)console.log(` Destination: ${destination.description}, 
         }}
     >
 
-    {origin && destination && (
+    { origin && destination && (
       <MapViewDirections 
         origin={ origin.description }
         destination={ destination.description }
         apikey={ GOOGLE_API_KEY }
-        strokeWidth={6}
+        strokeWidth={3}
         strokeColor="black"
-
-        onStart={(params) => {
-              console.log(`Started routing between "${params.origin}" and "${params.destination}"`);
-            }}
-            
-        onReady={result => {
-              console.log(`Distance: ${result.distance} km`)
-              console.log(`Duration: ${result.duration} min.`)
-            }}
-
-        onError={(err) => {
-              console.log(err);
-            }}
       />
     )}
+     {/* ^^^ React-native-maps-directions not working. Coming back to this after I have a working app
+    Maybe trt lazyfox-directions */}
 
     {origin?.location && (
         <Marker 
@@ -76,9 +76,12 @@ if(destination && origin)console.log(` Destination: ${destination.description}, 
     )}
 
     </MapView>
-  )
-}
+
+  );
+};
 
 export default Map
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  
+  })
