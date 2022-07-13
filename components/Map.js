@@ -3,9 +3,10 @@ import MapView, { Marker } from 'react-native-maps';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useRef } from 'react'
 import tw from 'tailwind-react-native-classnames';
-import { selectOrigin, selectDestination } from '../slices/navSlice';
+import { selectOrigin, selectDestination, setTravelTimeInformation } from '../slices/navSlice';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_API_KEY } from "@env";
+var axios = require('axios');
 
 const Map = () => {
 
@@ -24,22 +25,28 @@ useEffect(() => {
 },[origin, destination])
 
 useEffect(() => {
+  if(!origin || !destination) return;
+
     const getTravelTime = async () => {
-      fetch(
-      `https://maps.googleapis.com/maps/api/distancematrix/json?
-      units=imperial&origin=${ origin.description }
-      &destination=${ destination.description }&key=${ GOOGLE_API_KEY }`
-      )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
+      
+      const config = {
+        method: 'get',
+        url: `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&units=imperial&key=${GOOGLE_API_KEY}`,
+        headers: { }
+};
+
+    axios(config)
+      .then(function ({data}) {
+        console.log(data);
+        console.log(origin, destination);
         dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
-      })
+        })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
+    getTravelTime();
 }, [origin, destination, GOOGLE_API_KEY])
-
-if(destination && origin)console.log(` Destination: ${destination.description}, origin: ${origin}`)
-
 
   return (
     <MapView

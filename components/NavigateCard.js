@@ -34,9 +34,10 @@ const NavigateCard = () => {
           }}
 
           onPress={( data, details = null ) => {
+            console.log( data, details );
             dispatch(setDestination({
               location: details.geometry.location,
-              description: details.description,
+              description: data.description,
             }))
             navigation.navigate("RideOptionsCard");
           }}
