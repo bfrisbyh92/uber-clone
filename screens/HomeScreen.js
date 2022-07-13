@@ -62,9 +62,9 @@ const navigation = useNavigation();
 
                   dispatch(setOrigin({
                     location: details.geometry.location,
-                    description: details.description
+                    description: data.description
                   }))
-                  dispatch(setDestination(null))
+                  // dispatch(setDestination(null))
                 }}
                 // ^^^ Storing origin in Redux to be used later when calculating ride
                 enablePoweredByContainer={false}

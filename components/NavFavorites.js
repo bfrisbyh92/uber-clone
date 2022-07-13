@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
