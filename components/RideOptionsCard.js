@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
+import { useSelector } from 'react-redux';
+import { selecttravelTimeInformation } from '../slices/navSlice';
 
 const data = [
   {
@@ -27,9 +29,11 @@ const data = [
 
 const RideOptionsCard = () => {
 
-const [selected, setSelected] = useState(null);
-
   const navigation = useNavigation();
+  const [selected, setSelected] = useState(null);
+  const travelTimeInformation = useSelector(selecttravelTimeInformation)
+// ^^^ travelTimeInformation being dispatched to redux inside map component calculated and value is pulled in here ^^^
+
   return (
     <SafeAreaView
       style={tw`bg-white flex-grow`}
@@ -43,7 +47,7 @@ const [selected, setSelected] = useState(null);
         </TouchableOpacity>
 
       <Text style={tw`text-center py-5 text-xl`}>
-      Select a Ride
+      Select a Ride -- { travelTimeInformation?.distance.text }
       </Text>
 
       </View>
