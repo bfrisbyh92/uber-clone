@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Platform } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
+// import EndScreen from './screens/EndScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -49,6 +50,14 @@ export default function App() {
             headerShown: false,
           }}
          />
+
+         {/* <Stack.Screen
+          name="EndScreen"
+          component={ EndScreen }
+          options={{
+            headerShown: false,
+          }}
+         /> */}
 
       </Stack.Navigator>
 
